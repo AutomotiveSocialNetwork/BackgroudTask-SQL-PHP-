@@ -1,0 +1,985 @@
+circle.php
+//////////
+
+<?php
+    require "init.php";
+
+    $circleID = "jjf";
+ $operation= $_POST["operation"];
+   switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into circle values('$circleID');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in circle table";
+         }
+         else{
+             
+              echo "values not added in circle table";
+         }
+    break;
+ }
+    
+?>
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+demo.php
+/////////
+
+<?php
+
+
+ require "initDB2.php";
+
+ 
+$id = $_POST["id"];
+ 
+$name = $_POST["name"];
+ 
+$email = $_POST["email"];
+ 
+$password = $_POST["password"];
+
+
+$sql= "INSERT INTO table1 VALUES('$id','$name','$email','$password');";
+
+
+
+if( mysqli_query($con,$sql) )
+     
+echo " \n values added in table1 table";
+ 
+else
+      
+echo "\n values not added in table1 table";
+
+
+
+?>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+doTrip.php
+///////////
+
+<?php
+
+require "init.php";
+ 
+ 
+$driverID = $_POST["driverID"];
+ 
+$carID = $_POST["carID"];
+ 
+$tripID = $_POST["tripID"];
+
+ 
+ 
+$operation= $_POST["operation"];
+ 
+switch( $operation )
+ {
+    
+case "INSERT" :
+        
+$sql= "insert into doTrip values('$driverID','$carID','$tripID');";
+
+if(mysqli_query($con,$sql))
+{
+             
+echo "values added in do trip table";
+         
+}
+         
+else{
+             
+              
+echo "values not added in do trip table";
+         
+}
+    
+break;
+ 
+}
+ 
+ 
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+driverFav
+/////////
+
+<?php
+    require "init.php";
+
+    $driverID = $_POST["driverID"];
+    $favourite = $_POST["favourite"];
+
+   $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into driverFav values('$driverID','$favourite');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in driverFav table";
+         }
+         else{
+             
+              echo "values not added in driverFav table";
+         }
+    break;
+ }
+    
+?>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+driver.php
+///////////
+
+<?php
+
+ require "init.php";
+ 
+ $operation= $_POST["operation"];
+ 
+$driverID = $_POST["driverID"];
+$email = $_POST["email"];
+$job = $_POST["job"];
+$name = $_POST["name"];
+$telephone = $_POST["telephone"];
+$password = $_POST["password"];
+$status = $_POST["status"];
+
+
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into driver values('$driverID','$email','$job','$name','$telephone','$password','$status');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in driver table";
+         }
+         else{
+             
+              echo "values not added in partner table";
+         }
+    break;
+ }
+
+?>
+ 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+dynamicCircle
+///////////////
+
+<?php
+    require "init.php";
+
+    $location = $_POST["location"];
+    $circleID = $_POST["circleID"];
+    
+    $radius = "-";
+    $maxRadius = "-";
+    $minRadius = "-";
+    $maxCars = "-";
+
+    $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into problem values('$circleID',$radius','$location',$maxRadius','$minRadius','$maxCars');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in dynamicCircle table";
+         }
+         else{
+             
+              echo "values not added in dynamicCircle table";
+         }
+    break;
+ }
+    
+?>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+event.php
+//////////
+
+<?php
+    require "init.php";
+
+    $name = $_POST["name"];
+    $type = $_POST["type"];
+    $logo = $_POST["logo"];
+    $date = $_POST["date"];
+
+    $eventID = "itjfsfa";
+    
+   $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into event values('$eventID','$type','$logo','$date',$name');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in event table";
+         }
+         else{
+             
+              echo "values not added in event table";
+         }
+    break;
+ }
+    
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+hasCircle.php
+//////////////
+
+<?php
+    require "init.php";
+
+    $carID = $_POST["carID"];
+    $circleID = $_POST["circleID"];
+    $arrivalTime = $_POST["arrivalTime"];
+    $depTime = $_POST["depTime"];
+    
+    $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into hasCircle values('$circleID','$carID','$deptime','$arrivalTime');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in hasCircle table";
+         }
+         else{
+             
+              echo "values not added in hasCircle table";
+         }
+    break;
+ }
+    
+?>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+help.php
+--------
+
+<?php
+    require "init.php";
+
+    $problemID = $_POST["problemID"];
+    $type = $_POST["type"];
+    $solution = $_POST["solution"];
+    
+   $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into help values('$problemID','$solution','$type');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in help table";
+         }
+         else{
+             
+              echo "values not added in help table";
+         }
+    break;
+ }
+    
+?>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+init.php
+---------
+
+<?php
+
+$host="localhost";
+$database="id4810695_asn_asu_cse18";
+$username="id4810695_asnasucse18";
+$password="asn_asu_cse18";
+
+$con=mysqli_connect($host,$username,$password,$database);
+
+if(!$con){
+    
+    echo "Connection unsuccessful";
+}
+
+
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+}
+
+?>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+initDB2.php
+------------
+
+<?php
+
+$host="localhost";
+
+$database="id4810695_asn_asu_cse18";
+
+$username="id4810695_asnasucse18";
+
+$password="asn_asu_cse18";
+
+
+$con=mysqli_connect($host,$username,$password,$database);
+
+
+if(!$con){
+    
+    
+echo "Connection unsuccessful";
+
+}
+
+else
+    
+echo "connection successful";
+
+
+
+if ($con->connect_error) {
+
+    die("Connection failed: " . $con->connect_error);
+
+}
+
+
+?>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+insertReactData.php
+---------------------
+
+<?php
+
+ require "init.php";
+ 
+ $eventID=$_POST["eventID"];
+ $carID=$_POST["carID"];
+$driverID=$_POST["driverID"];
+$action=$_POST["action"];
+
+$operation= $_POST["operation"];
+
+ 
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into react values('$eventID','$carID','$driverID','$action');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in react table";
+         }
+         else{
+             
+              echo "values not added in react table";
+         }
+    break;
+ }
+ 
+
+?>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+insertReportData.php
+---------------------
+
+<?php
+
+ require "init.php";
+ 
+ $carID=$_POST["carID"];
+ $driverID=$_POST["driverID"];
+$problemID=$_POST["problemID"];
+
+ $operation= $_POST["operation"];
+
+  switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into report values('$carID','$driverID','$problemID');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in report table";
+         }
+         else{
+             
+              echo "values not added in report table";
+         }
+    break;
+ }
+
+?>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+insertSolveData.php
+----------------------
+
+<?php
+
+ require "init.php";
+ 
+ $carID=$_POST["carID"];
+ $driverID=$_POST["driverID"];
+$problemID=$_POST["problemID"];
+
+$operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into solve values('$carID','$driverID','$problemID');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in solve table";
+         }
+         else{
+             
+              echo "values not added in solve table";
+         }
+    break;
+ }
+
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+insertStaticCircleData.php
+------------------------------
+
+<?php
+
+ require "init.php";
+ 
+ $circleID=$_POST["circleID"];
+ $name=$_POST["name"];
+
+
+ 
+ $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into staticCircle values('$circleID','$name');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in staticCircle table";
+         }
+         else{
+             
+              echo "values not added in staticCircle table";
+         }
+    break;
+ }
+
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+insertTripData.php
+--------------------
+
+<?php
+
+ require "init.php";
+ 
+ $tripID=$_POST["tripID"];
+ $source=$_POST["source"];
+ $destination=$_POST["destination"];
+ $date=$_POST["date"];
+ $duration=$_POST["duration"];
+
+ $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into trip values('$tripID','$source','$destination','$date','$duration');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in trip table";
+         }
+         else{
+             
+              echo "values not added in trip table";
+         }
+    break;
+ }
+ 
+
+?>
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+joinCarDriver.php (drives)
+--------------------------------
+
+<?php
+    require "init.php";
+
+    $carID = $_POST["carID"];
+    $driverID = $_POST["driverID"];
+    $ownerFlag = $_POST["ownerFlag"];
+
+    $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into drives values('$carID','$driverID','$ownerFlag');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in drives table";
+         }
+         else{
+             
+              echo "values not added in drives table";
+         }
+    break;
+ }
+    
+?>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+login.php
+-------------
+
+<?php
+
+require "init.php";
+$host="localhost";
+$database="id4810695_asn_asu_cse18";
+$username="id4810695_asnasucse18";
+$password="asn_asu_cse18";
+
+$email="hadeer@gmail.com";
+$password1="123456789";
+
+
+
+$sql= "select * from driver where driver.email like '$email' and driver.password like '$password1' ;";
+$con =mysqli_connect($host,$username,$password,$database);
+
+$result= mysqli_query($con,$sql);
+
+$response= array();
+
+while($row=mysqli_fetch_array($result))
+{
+    
+ array_push($response,array("email"=>$row[1],"password"=>$row[5]));
+   
+    
+}
+
+ echo json_encode(array("server_response"=>$response));
+//echo  "<script>console.log(".$result.");</script>";
+ mysqli_close($con);
+ 
+
+?>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+makeEvent.php
+----------------
+
+<?php
+
+ require "init.php";
+ 
+ $operation= $_POST["operation"];
+ 
+ $ownerID = $_POST["ownerID"];
+ $eventID = $_POST["eventID"];
+
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into makeEvent values('$ownerID','$eventID');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in makeEvent table";
+         }
+         else{
+             
+              echo "values not added in makeEvent table";
+         }
+    break;
+ }
+
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+owner.php
+---------------
+
+<?php
+
+ require "init.php";
+ 
+ $operation= $_POST["operation"];
+ 
+ $ownerID = $_POST["ownerID"];
+ $telephone = $_POST["telephone"];
+ $address = $_post["address"];
+
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into owner values('$ownerID','$telephone',$address);";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in owner table";
+         }
+         else{
+             
+              echo "values not added in owner table";
+         }
+    break;
+ }
+
+?>
+ 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+partner.php
+-------------
+
+<?php
+
+ require "init.php";
+ 
+ $operation= $_POST["operation"];
+ 
+ $ownerID = $_POST["ownerID"];
+ $name = $_POST["name"];
+
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into partner values('$ownerID','$name');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in partner table";
+         }
+         else{
+             
+              echo "values not added in partner table";
+         }
+    break;
+ }
+
+?>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+place.php
+---------------
+
+<?php
+
+ require "init.php";
+ 
+ $operation= $_POST["operation"];
+ 
+ $ownerID = $_POST["ownerID"];
+ $organizationName = $_POST["organizationName"];
+
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into place values('$ownerID','$organizationName');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in place table";
+         }
+         else{
+             
+              echo "values not added in place table";
+         }
+    break;
+ }
+
+?>
+ 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+problem.php
+--------------
+
+<?php
+
+ require "init.php";
+ 
+ $operation= $_POST["operation"];
+ 
+ $problemID = $_POST["problemID"];
+ $time = $_POST["time"];
+ $location = $_POST["location"];
+ $context = $_POST["context"];
+ 
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into problem values('$problemID','$time','$location','$context');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in problem table";
+         }
+         else{
+             
+              echo "values not added in problem table";
+         }
+    break;
+ }
+
+?>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+retrievrNeighbourCar.php
+------------------------------
+
+<?php
+
+
+require "init.php";
+
+
+$lat=$_POST["lat"];
+
+$long=$_POST["long"];
+
+
+$carID=$_POST["carId"];
+
+$driverID=$_POST["driverID"];
+
+$time=$_POST["time"];
+
+
+$sql =" select * from view driversOnRoad where SQRT((latitude-'$lat')(latitude-'$lat')+(logitude-'$long')(logitude-'$long')) and time >= $time-600  ; ";
+
+?>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+signUpCar.php
+--------------
+
+<?php
+    require "init.php";
+
+    $carID = $_POST["carID"];
+    $obdSerial = $_POST["obdSerial"];
+    $model = $_POST["model"];
+
+    $fuel = "-";
+    $speed = "-";
+    $rpm = "-";
+
+    $query = "INSERT INTO car(carID, obdSerial, model, fuel, rpm, speed) 
+                VALUES('$carID', '$obdSerial', '$model', '$fuel', '$rpm', '$speed');";
+
+    if(mysqli_query($con,$query)){
+        echo "Data Inserted";
+    }else {
+        echo "Error";
+    }
+    
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+signUp.php
+--------------
+
+<?php
+    require "init.php";
+
+    $name = "Hadeer";
+    $password = "123456789";
+    $confirm_password = "123456789";
+    $email = "hadeer@gmail.com";
+    $job = "engineer";
+    $telephone = "01234567890";
+
+    $driverID = "ddd";
+
+$operation="SIGNUP";
+
+switch( $operation )
+ {
+    case "SIGNUP" :
+        if($password == $confirm_password)
+        {
+            $query = "INSERT INTO driver(driverID, name, password, email, job, telephone)VALUES('$driverID','$name', '$password', '$email', '$job', '$telephone');";
+            if(mysqli_query($con,$query)){
+                echo "Data Inserted";
+            }else {
+                echo "Error";
+            }
+        }
+        else
+        {echo "confirm password not equal password";}
+    break;
+ }
+
+
+
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+trackLocation.php
+-------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+visitedLocation.php
+------------------------
+
+<?php
+
+require "init.php";
+
+
+$lat=$_POST["lat"];
+
+$long=$_POST["long"];
+
+
+$carID=$_POST["carId"];
+
+$driverID=$_POST["driverID"];
+
+$time=$_POST["time"];
+
+
+$operation=$_POST["method"];
+
+
+$goLlocationSQL="INSERT INTO locations (carID,driverID,time) VALUES ('$carID','$driverID','$time');";
+
+
+$locationSQL="INSERT INTO locations (latitude,longitude) VALUES ('$lat','$long');";
+
+
+switch($operation){
+    
+    
+case "INSERT":
+        
+if(mysqli_query($con,$locationSQL)){
+            
+if(mysqli_query($con,$goLlocationSQL)){
+                
+echo "location values added";
+            
+}
+else{
+                
+echo "location values not  added";
+
+            
+}
+            
+        }
+else{
+              
+echo "location values not  added";
+  }
+        
+break;
+
+}
+
+
+
+?>
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+warningDataInsertion.php
+-----------------------------
+
+<?php
+
+ require "init.php";
+ 
+ $problemID=$_POST["problem"];
+ $status=$_POST["status"];
+ $endTime=$_POST["endTime"];
+
+ 
+ $operation= $_POST["operation"];
+ switch( $operation )
+ {
+    case "INSERT" :
+        $sql= "insert into warning values('$problemID','$status','$endtime');";
+        if(mysqli_query($con,$sql))
+         {
+             echo "values added in warning table";
+         }
+         else{
+             
+              echo "values not added in warning table";
+         }
+    break;
+ }
+ 
+
+?>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
