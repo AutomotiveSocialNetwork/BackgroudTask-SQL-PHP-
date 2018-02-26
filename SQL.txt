@@ -1,0 +1,299 @@
+CREATE TABLE car
+( carID CHAR(50) PRIMARYKEY,
+  model CHAR(50),
+  speed double,
+  fuel double,
+rpmSerial  CHAR(50),
+  );
+
+////////////////////////////////
+
+CREATE TABLE circle
+( circleID CHAR(50) PRIMARYKEY,
+);
+
+////////////////////////////////////
+
+CREATE TABLE doTrip
+( driverID CHAR(50) ,
+carID CHAR(50),
+  tripID double,
+PRIMARYKEY(driverID,carID,tripID),
+  
+    FOREIGN KEY (driverID)
+    REFERENCES driver(driverID),
+    FOREIGN KEY (carID)
+    REFERENCES car(carID)
+
+
+);
+
+///////////////////////////////////
+
+CREATE TABLE doTrip
+( driverID CHAR(50) ,
+carID CHAR(50),
+  tripID double,
+PRIMARYKEY(driverID,carID,tripID),
+  
+    FOREIGN KEY (driverID)
+    REFERENCES driver(driverID),
+    FOREIGN KEY (carID)
+    REFERENCES car(carID)
+
+
+);
+
+//////////////////////////////////////////
+
+CREATE TABLE driver
+( driverID CHAR(50) ,
+email CHAR(50),
+  job CHAR(50),
+name CHAR(50),
+telephone CHAR(15),
+password CHAR(50),
+status CHAR(50),
+PRIMARYKEY(driverID)
+);
+
+///////////////////////////////////
+
+CREATE TABLE dRIVES
+( carID CHAR(50) ,
+driverID CHAR(50),
+ownerflag CHAR(50),
+PRIMARYKEY(carID),
+  
+    FOREIGN KEY (driverID)
+    REFERENCES driver(driverID),
+    FOREIGN KEY (carID)
+    REFERENCES car(carID)
+
+
+);
+
+//////////////////////////
+
+CREATE TABLE dynamicCircle
+( circleID CHAR(50) ,
+latitude  double,
+ longitude double,
+maxCars INT,
+PRIMARYKEY(circleID),
+  
+    FOREIGN KEY (circleID)
+    REFERENCES circle(circleID),
+        
+);
+
+///////////////////////////
+
+CREATE TABLE event
+( eventID CHAR(50) ,
+type CHAR(50),
+logo  double,
+date DATETIME,
+name CHAR(50),
+PRIMARYKEY(eventID),    
+
+);
+
+////////////////////////////////////////////////////
+
+CREATE TABLE goLocations
+( locationID CHAR(50) ,
+carID CHAR(50),
+ driverID double,
+time DATETIME,
+PRIMARYKEY(carID,driverID,locationID),
+  
+    FOREIGN KEY (driverID)
+    REFERENCES driver(driverID),
+    FOREIGN KEY (carID)
+    REFERENCES car(carID),
+FOREIGN KEY (locationID) REFERENCES locations (locationID)
+
+
+);
+
+///////////////////////////////
+
+CREATE TABLE hasCircle
+( circleID CHAR(50) ,
+carID CHAR(50),
+ deptime  TIME,
+arrivalTime TIME,
+PRIMARYKEY(circleID,carID),
+  
+    FOREIGN KEY (circleID)
+    REFERENCES circle(circleID),
+    FOREIGN KEY (carID)
+    REFERENCES car(carID)
+);
+
+/////////////////////////
+
+CREATE TABLE help
+( problemID      CHAR(50) ,
+solution      CHAR(50),
+  type        CHAR(50),
+PRIMARYKEY(problemID),
+  
+    FOREIGN KEY (problemID)
+    REFERENCES problem(problemID),
+
+);
+
+//////////////////////////////////////////
+
+CREATE TABLE locations
+( locationID CHAR(50) ,
+latitude double,
+ longitude  double,
+PRIMARYKEY(locationID),
+  
+    
+
+);
+
+//////////////////////////////////////////////////////
+
+CREATE TABLE makeEvent
+( eventID CHAR(50) ,
+ownerID CHAR(50),
+
+PRIMARYKEY(eventID,ownerID),
+  
+    FOREIGN KEY (eventID)
+    REFERENCES event(eventID),
+    FOREIGN KEY (ownerID)
+    REFERENCES   owner(ownerID)
+
+
+);
+
+////////////////////////////////
+
+CREATE TABLE owner
+( ownerID CHAR(50) ,
+telephone CHAR(50),
+  address CHAR(50),
+PRIMARYKEY(ownerID),
+  
+);
+
+//////////////////////////////////////////////////
+
+CREATE TABLE partner
+( ownerID CHAR(50) ,
+name CHAR(50),
+  
+PRIMARYKEY(ownerID),
+
+);
+
+///////////////////////////////////////
+
+CREATE TABLE warning (
+    problemID CHAR(50) PRIMARYKEY,
+    status CHAR(50),
+    endTime TIME,
+   FOREIGNKEY problemID REFERENCES problem(problemID)
+);
+
+///////////////////////////////////
+
+CREATE TABLE trip (
+    tripID CHAR(50) PRIMARYKEY,
+    source CHAR(50),
+    destination CHAR(50),
+    date DATE,
+    duration DOUBLE,
+  
+);
+///////////////////////////////////
+
+CREATE TABLE staticCircle (
+    circleID CHAR(50) PRIMARYKEY,
+    name CHAR(50),
+    
+   FOREIGNKEY circleID REFERENCES circle(circleID)
+);
+
+/////////////////////////////
+CREATE TABLE solve (
+    carID CHAR(50),
+    driverID CHAR(50),
+    problemID CHAR(50),
+   PRIMARYKEY(carID,driverID,problemID),
+   FOREIGNKEY carID REFERENCES car(carID),
+   FOREIGNKEY driverID REFERENCES driver(driverID),
+   FOREIGNKEY problemID REFERENCES problem(problemID)
+);
+///////////////////////////////////
+
+CREATE TABLE report (
+    carID CHAR(50),
+    driverID CHAR(50),
+    problemID CHAR(50),
+   PRIMARYKEY(carID,driverID,problemID),
+   FOREIGNKEY carID REFERENCES car(carID),
+   FOREIGNKEY driverID REFERENCES driver(driverID),
+   FOREIGNKEY problemID REFERENCES problem(problemID)
+);
+///////////////////////////////////
+
+
+CREATE TABLE react (
+    eventID CHAR(50),
+    carID CHAR(50),
+    driverID CHAR(50),
+   PRIMARYKEY(eventID,carID,driverID),
+   FOREIGNKEY eventID REFERENCES event(eventID),
+   FOREIGNKEY carID REFERENCES car(carID),
+   FOREIGNKEY driverID REFERENCES driver(driverID)
+);
+
+///////////////////////////////////
+
+CREATE TABLE problem (
+    problemID CHAR(50) PRIMARYKEY,
+    time TIME,
+    location CHAR(50),
+    context CHAR(50),
+
+);
+///////////////////////////////////
+
+CREATE TABLE place (
+    ownerID CHAR(50) PRIMARYKEY,
+    organizationName CHAR(50),
+    
+   FOREIGNKEY ownerID REFERENCES owner(ownerID)
+);
+
+///////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
